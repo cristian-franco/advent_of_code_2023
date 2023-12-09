@@ -1,5 +1,6 @@
 import re
 
+
 def remove_letters(original_str):
     number_str = re.sub(r'[a-zA-Z]', '', original_str)
 
@@ -31,31 +32,28 @@ def part_1():
 def part_2():
     total_value = 0
     number_strings_dict = {
-        'one': 1,
-        'two': 2,
-        'three': 3,
-        'four': 4,
-        'five': 5,
-        'six': 6,
-        'seven': 7,
-        'eight': 8,
-        'nine': 9
+        'one': 'one1one',
+        'two': 'two2two',
+        'three': 'three3three',
+        'four': 'four4four',
+        'five': 'five5five',
+        'six': 'six6six',
+        'seven': 'seven7seven',
+        'eight': 'eight8eight',
+        'nine': 'nine9nine'
     }
 
     file_1 = open('day_1_input.txt', 'r')
+    # file_1 = open('test_input.txt', 'r')
 
     for line in file_1:
         stripped_line = line.strip()
         converted_line = stripped_line
         print(converted_line)
 
-        chars_so_far = ''
-        for char in converted_line:
-            chars_so_far += char
-            for number_string in number_strings_dict:
-                chars_so_far = chars_so_far.replace(number_string, str(number_strings_dict[number_string]))
+        for number_string in number_strings_dict:
+            converted_line = converted_line.replace(number_string, str(number_strings_dict[number_string]))
 
-        converted_line = chars_so_far
         print(converted_line)
         converted_line = remove_letters(converted_line)
 
@@ -69,9 +67,6 @@ def part_2():
 
     file_1.close()
     print(total_value)
-
-
-
     return
 
 def main():
